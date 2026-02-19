@@ -58,7 +58,8 @@ html {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(10, 10, 10, 0.95);
+    height: 150px;
+    background: var(--primary-black);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 1000;
@@ -70,9 +71,10 @@ html {
     margin: 0 auto;
     padding: 0 var(--spacing-md);
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 120px;
 }
 
 .logo {
@@ -83,20 +85,14 @@ html {
 }
 
 .logo img {
-    width: 80px;
-    border-radius: 50px;
-}
-
-.logo h2 {
-    color: var(--accent-yellow);
-    font-size: var(--font-size-xl);
-    font-weight: bold;
+    width: 100px;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
     gap: var(--spacing-lg);
+    
 }
 
 .nav-link {
