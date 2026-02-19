@@ -8,7 +8,7 @@
 :root {
     --primary-black: #0a0a0a;
     --secondary-black: #1a1a1a;
-    --accent-yellow: #ffeb3b;
+    --accent-yellow: #FAE187;
     --yellow-hover: #fdd835;
     --dark-yellow: #f9a825;
     --text-white: #ffffff;
@@ -61,7 +61,6 @@ html {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-gray);
     z-index: 1000;
     transition: var(--transition);
 }
@@ -84,7 +83,7 @@ html {
 }
 
 .logo img {
-    width: 50px;
+    width: 80px;
     border-radius: 50px;
 }
 
@@ -127,21 +126,6 @@ html {
     width: 100%;
 }
 
-#contribuir-btn {
-    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--yellow-hover) 100%);
-    color: #0a0a0a;
-    padding: 10px 20px 10px 20px;
-    border-radius: 7px;
-    transition: var(--transition);
-}
-#contribuir-btn:hover {
-    transform: translate(-2px);
-    box-shadow: 0 8px 25px rgba(255, 235, 59, 0.4);
-}
-#contribuir-btn:hover::after {
-    width: 100%;
-}
-
 .hamburger {
     display: none;
     flex-direction: column;
@@ -162,7 +146,7 @@ html {
     display: flex;
     align-items: center;
     padding: var(--spacing-2xl) var(--spacing-md);
-    background: no-repeat url("/assets/whorship2.jpeg");
+    background: no-repeat url("/assets/hero-bg.png");
     background-size: cover;
     background-position: center;
     position: relative;
