@@ -3,295 +3,710 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Aline Bueno</title>
-    <link rel="icon" type="image/png" href="assets/aline-bueno-logo.png">
-    <link rel="stylesheet" href="styles/style.css">
+    <title>Aline Bueno Hair - Espaço de Beleza</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #FAE187;
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--black);
+            color: var(--gold);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a1a1a" width="1200" height="800"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--gold);
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--black);
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(250, 225, 135, 0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--dark-gray);
+            padding: 5rem 2rem;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--gold);
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 350px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-placeholder {
+            background: linear-gradient(135deg, var(--gold) 0%, #d4a574 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--black);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Carousel */
+        .carousel-container {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 500px;
+            background: var(--light-gray);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(250, 225, 135, 0.8);
+            color: var(--black);
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: var(--gold);
+        }
+
+        .carousel-btn.prev {
+            left: 1rem;
+        }
+
+        .carousel-btn.next {
+            right: 1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--black);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: var(--gold);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .service-card p {
+            color: #666;
+        }
+
+        /* Location Section */
+        .location {
+            background: var(--black);
+            padding: 5rem 2rem;
+            color: var(--gold);
+        }
+
+        .location h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info {
+            font-size: 1.1rem;
+        }
+
+        .location-info p {
+            margin-bottom: 1rem;
+        }
+
+        .location-info strong {
+            color: var(--gold);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(250, 225, 135, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--light-gray);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--black);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: var(--black);
+            color: var(--gold);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--gold);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gold);
+            font-size: 1.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div href="index.html" class="logo">
-                    <img src="assets/aline-bueno-logo.png" alt="Espaço Aline Bueno">
-                </div>
-                <ul class="nav-menu" id="nav-menu">
-                    <li><a href="#about" class="nav-link nav-link-load">Sobre nós</a></li>
-                    <li><a href="#cultos" class="nav-link nav-link-load">Serviços</a></li>
-                    <li><a href="#mr-social" class="nav-link nav-link-load">Ações sociais</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">ALINE BUENO HAIR</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#localizacao">Localização</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Aline Bueno</h1>
-                <p class="hero-subtitle2">Espaço de Beleza </p>
-                <p class="hero-subtitle"> Nossa missão é fazer com que você se sinta única,renovada e com autoestima elevado!</p>
-                <a href="#about" class="cta-button">Agendar atentimento</a>
-            </div>
+        <div class="hero-content fade-in">
+            <h1>ALINE BUENO HAIR</h1>
+            <p>Espaço de Beleza & Bem-Estar</p>
+            <a href="#contato" class="cta-button">AGENDE SEU HORÁRIO</a>
         </div>
     </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Quem Somos</h2>
-                <p><b>Somos uma igreja que acredita na provisão de Deus para recomeços, seja na fé, na família, no ministério ou vida pessoal.</b></p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up">
-                    <img src="/assets/missao.png" class="feature-icon">
-                    <h3>Nossa Missão</h3>
-                    <p>Apresentar um evangelho puro, simples e transformador, restaurando vidas e despertando propósitos através da Palavra, do amor e do poder do Espírito Santo.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/assets/visao.png" class="feature-icon">
-                    <h3>Nossa Visão</h3>
-                    <p>Ser uma igreja referência em recomeços, onde pessoas encontram cura, são equipadas para viver com propósito e impactam o mundo com o evangelho, por meio da Palavra, 
-                        da oração, do serviço e da comunhão.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/assets/valores.png" class="feature-icon">
-                    <h3>Nossos Valores</h3>
-                    <ul class="nossos-valores-ul">
-                        <li class="valores-li">Evangelho sem religiosidade;</li>
-                        <li class="valores-li">Intimidade com Deus;</li>
-                        <li class="valores-li">Transformação real e completa;</li>
-                        <li class="valores-li">Acolhimento e amor genuíno;</li>
-                        <li class="valores-li">Unção e direção do Espírito Santo;</li>
-                        <li class="valores-li">Justiça e compaixão;</li>
-                        <li class="valores-li">Chamado e discipulado.</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- About Section -->
+    <section id="sobre" class="about">
+        <div class="about-text">
+            <h2>Sobre Nós</h2>
+            <p>Bem-vindo ao Aline Bueno Hair, seu refúgio de beleza e sofisticação. Nosso espaço foi cuidadosamente projetado para proporcionar uma experiência única e transformadora.</p>
+            <p>Com profissionais altamente qualificados e produtos de primeira linha, nos dedicamos a realçar sua beleza natural e autoestima.</p>
+            <p>Cada atendimento é personalizado, pensado nos mínimos detalhes para que você saia daqui renovada e radiante.</p>
+        </div>
+        <div class="about-image">
+            <img src="/mnt/user-data/uploads/1772821932152_image.png" alt="Espaço Aline Bueno">
         </div>
     </section>
 
-    <section id="cultos" class="event-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossos Cultos</h2>
-                <p>Participe de nossos encontros e celebre conosco. Você é nosso convidado especial!</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up">
-                    <img src="/assets/domingo.png" class="feature-icon">
-                    <h3>Culto de Domingo</h3>
-                    <p><strong>Domingo às 18h</strong></p>
-                    <p>Um tempo de louvor, adoração e uma palavra inspiradora para começar bem a sua semana.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/assets/quarta.png" class="feature-icon">
-                    <h3>Culto de Quarta-feira</h3>
-                    <p><strong>Quartas-feiras às 20h</strong></p>
-                    <p>Culto de avivamento e oração, onde a presença do Senhor vai renovar as suas forças.</p>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/assets/jovens.png" class="feature-icon">
-                    <h3>Culto de Jovens</h3>
-                    <p><strong>Sábado (segundo e último de cada mês) às 19h30min</strong></p>
-                    <p>Louvor que conecta e palavra que edifica, um tempo precioso para o florescimento espiritual da nossa juventude.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="mr-social" class="projetos">
-        <div class="container">
-            <div class="section-header">
-                <img src="/assets/mrsocial.png" class="projeto-icon">
-                <h2>MR Social</h2>
-                <p>o MR Social é um projeto da Igreja Moriá Restart, nascido do desejo de sermos resposta para a nossa cidade.</p>
-            </div>
-            <div class="projetos-grid">
-                <a class="mr-social-links" href="/mercado.html" target="_blank">
-                    <div class="projeto-card" data-aos="fade-up">
-                        <div class="projeto-info">
-                            <img src="/assets/mercado.png" class="projeto-icon">
-                            <h3>Mercado Solidário</h3>
-                            <p class="projeto-title">Um chamado para semear amor e esperança</p>
-                            <p class="projeto-description">O mercado solidário nasceu no coração de Deus para levar alimento que cuidado às famílias que mais precisam.</p>
-                        </div>
+    <!-- Gallery Section -->
+    <section id="galeria" class="gallery">
+        <h2>Nossos Trabalhos</h2>
+        
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+            <div class="carousel" id="carousel">
+                <div class="carousel-item">
+                    <div class="gallery-placeholder">
+                        <p>Transformações Incríveis<br>Foto 1</p>
                     </div>
-                </a>
-                <a class="mr-social-links" href="/dike.html" target="_blank">
-                <div class="projeto-card" data-aos="fade-up" data-aos-delay="400">
-                   <div class="projeto-info">
-                       <img src="/assets/dike.png" class="projeto-icon">
-                       <h3>Diké</h3>
-                       <p class="projeto-title">Justiça que Liberta, Amor que Restaura</p>
-                       <p class="projeto-description">Atendimento jurídico gratuito à comunidade, com foco em populações vulneráveis, promovendo justiça, dignidade e restauração social à luz
-                        os princípios cristãos</p>
-                   </div>
-               </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="gallery-placeholder">
+                        <p>Coloração Exclusiva<br>Foto 2</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="gallery-placeholder">
+                        <p>Cortes Personalizados<br>Foto 3</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="gallery-placeholder">
+                        <p>Tratamentos Premium<br>Foto 4</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" style="margin-top: 3rem;">
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Antes & Depois 1</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Antes & Depois 2</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Antes & Depois 3</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Antes & Depois 4</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Antes & Depois 5</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Antes & Depois 6</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <h2>Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">✂️</div>
+                <h3>Cortes</h3>
+                <p>Cortes personalizados de acordo com seu estilo e formato de rosto</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Coloração</h3>
+                <p>Técnicas avançadas de coloração, luzes e mechas</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💆</div>
+                <h3>Tratamentos</h3>
+                <p>Hidratação, reconstrução e nutrição capilar profunda</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Escova</h3>
+                <p>Escova modeladora e progressiva para cabelos impecáveis</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💅</div>
+                <h3>Penteados</h3>
+                <p>Penteados para eventos especiais e ocasiões únicas</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌟</div>
+                <h3>Day Spa</h3>
+                <p>Dia completo de cuidados e bem-estar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="localizacao" class="location">
+        <h2>Onde Estamos</h2>
+        <div class="location-content">
+            <div class="location-info">
+                <p><strong>📍 Endereço:</strong><br>
+                Visite-nos em nosso espaço acolhedor</p>
+                
+                <p><strong>⏰ Horário de Funcionamento:</strong><br>
+                Segunda a Sexta: 9h às 19h<br>
+                Sábado: 9h às 17h</p>
+                
+                <p><strong>📞 Contato:</strong><br>
+                WhatsApp e telefone para agendamentos</p>
+                
+                <p style="margin-top: 2rem;">
+                    <a href="https://maps.app.goo.gl/GzDoquA1iahscAwU8" target="_blank" class="cta-button">
+                        VER NO GOOGLE MAPS
+                    </a>
+                </p>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/place/Espa%C3%A7o+de+beleza+Aline+Bueno/@-29.1123474,-51.0871442,474m/data=!3m1!1e3!4m6!3m5!1s0x951ebfc5d3814fa1:0x6d3846a68bce61f5!8m2!3d-29.1123474!4d-51.0852485!16s%2Fg%2F11vlk26nl2?entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3Dz"
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <h2>Entre em Contato</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Agende seu horário e venha nos visitar!</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/5554999999999" target="_blank" class="contact-btn">
+                📱 WhatsApp
             </a>
-               <a class="mr-social-links" href="/reviver60.html" target="_blank">
-                <div class="projeto-card" data-aos="fade-up" data-aos-delay="400">
-                   <div class="projeto-info">
-                       <img src="/assets/mr60.png" class="projeto-icon">
-                       <h3>Reviver 60+</h3>
-                       <p class="projeto-title">Nunca é tarde para viver com propósito</p>
-                       <p class="projeto-description">Promover saúde física, mental, emocional e espiritual para pessoas com 60 anos ou mais, através de atividades integrativas com base no amor de Cristo.</p>
-                   </div>
-               </div>
-               </a>
-            </div>
+            <a href="tel:+5554999999999" class="contact-btn">
+                📞 Ligar Agora
+            </a>
+            <a href="https://instagram.com/alinebuenohair" target="_blank" class="contact-btn">
+                📸 Instagram
+            </a>
         </div>
     </section>
 
-    <section id="grupos" class="projetos">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossos Grupos</h2>
-                <p>Um lugar para pertencer, crescer em comunhão e fortalecer a fé.</p>
-            </div>
-            <div class="projetos-grid">
-                <div class="projeto-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="projeto-info">
-                        <img src="/assets/fec.png" class="feature-icon">
-                        <h3>F.E.C - Forças Especiais de Cristo</h3>
-                        <p class="projeto-title">Rede de jovens</p>
-                        <p class="projeto-description">Um espaço de comunhão e fé, onde jovens se reúnem para crescer na Palavra e fortalecer amizades.</p>
-                    </div>
-                </div>
-                <div class="projeto-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="projeto-info">
-                        <img src="/assets/liame.png" class="feature-icon">
-                        <h3>LIAME</h3>
-                        <p class="projeto-title">Rede de casais</p>
-                        <p class="projeto-description">Onde casais se conectam para fortalecer a aliança do casamento através da comunhão e da Palavra.</p>
-                    </div>
-                </div>
-                 <div class="projeto-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="projeto-info">
-                        <img id="img-kids" src="/assets/kids.png" class="feature-icon">
-                        <h3>Culto Kids</h3>
-                        <p class="projeto-title">O culto para as nossas crianças</p>
-                        <p class="projeto-description">Uma celebração da fé adaptada para crianças, com o objetivo de ensinar princípios bíblicos de forma divertida, interativa e relevante para a idade delas.</p>
-                    </div>
-                </div>
-                <div class="projeto-card" data-aos="fade-up" data-aos-delay="400">
-                   <div class="projeto-info">
-                    <img id="img-herdeiras" src="/assets/herdeiras.jpg" class="feature-icon">
-                       <h3>Herdeiras</h3>
-                       <p class="projeto-title">Rede de mulheres</p>
-                       <p class="projeto-description">Um momento de acolhimento e fé, onde mulheres fortalecem umas às outras e florescem em seu propósito.</p>
-                   </div>
-               </div>
-               <div class="projeto-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="projeto-info">
-                        <img src="/assets/diaconato.png" class="feature-icon">
-                        <h3>Diaconato</h3>
-                        <p class="projeto-title">Serviço, cuidado e amor em ação</p>
-                        <p class="projeto-description">Expressando o amor de Deus em cada detalhe, este ministério se dedica ao serviço, ao cuidado da casa e ao acolhimento de todos.</p>
-                    </div>
-                </div>
-                <div class="projeto-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="projeto-info">
-                        <img src="/assets/louvor.png" class="feature-icon">
-                        <h3>Louvor Moriá Restart</h3>
-                        <p class="projeto-title">Adoração e Louvor ao Senhor</p>
-                        <p class="projeto-description">O Ministério de Louvor conduz a igreja em adoração por meio da música, preparando o ambiente espiritual para que todos se conectem com Deus de forma mais profunda.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/alinebuenohair" target="_blank">📸</a>
+            <a href="https://facebook.com/alinebuenohair" target="_blank">📘</a>
+            <a href="https://wa.me/5554999999999" target="_blank">💬</a>
         </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Fale Conosco</h2>
-                <p>Estamos de braços abertos para te receber. Entre em contato ou venha nos visitar!</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Nossos Canais</h3>
-                    <p>Tem dúvidas? Nossa equipe está pronta para te ajudar!</p>
-                    <div class="contact-methods">
-                        <div class="contact-item">
-                            <strong>📱 WhatsApp:</strong>
-                            <span> (54) 9 9241-1904</span>
-                        </div>
-                        <div class="contact-item">
-                            <strong>📍 Endereço:</strong>
-                            <span>Av. Rio Branco, 1955 - Ana Rech, Caxias do Sul - RS, 95060-145</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-social">
-                    <h3>Redes Sociais</h3>
-                    <div class="social-links-contact">
-                        <a href="https://www.facebook.com/MoriaRestart" target="_blank">Facebook</a>
-                        <a href="https://www.instagram.com/alinebueno_hair" target="_blank">Instagram</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="contribuir" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Contribuir</h2>
-                <p>Sua generosidade nos ajuda a expandir o Reino de Deus e a manter nossos projetos. Deus abençoe sua vida!</p>
-            </div>
-            <div class="contribuir-content">
-                <div class="contribuir-info">
-                    <h3>Dados Bancários</h3>
-                    <p><strong>Banco:</strong> CC POUPANÇA E INVESTIMENTO SICREDI PIONEIRA RS (748)</p>
-                    <p><strong>Agência:</strong> 0101</p>
-                    <p><strong>Conta Corrente:</strong> 15204-4</p>
-                    <p><strong>Nome:</strong> Moriá Restart</p>
-                    <p><strong>CNPJ:</strong> 58.145.514/0001-15</p>
-                    <p><strong>Chave PIX (CNPJ):</strong> 58.145.514/0001-15</p>
-                </div>
-                <div class="contribuir-pix">
-                    <h3>PIX (QR Code)</h3>
-                    <img src="assets/qrcode-pix-moria.png" alt="QR Code PIX para doação">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Espaço de Beleza Aline Bueno</h3>
-                    <p>Nossa missão é fazer com que você se sinta única,renovada e com autoestima elevado!</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Links Úteis</h4>
-                    <a href="#about">Quem Somos</a>
-                    <a href="#cultos">Cultos</a>
-                    <a href="#mr-social">MR Social</a>
-                    <a href="#grupos">Grupos</a>
-                    <a href="#contact">Contato</a>
-                    <a href="#contribuir">Contribuir</a>
-                </div>
-                <div class="footer-social">
-                    <h4>Redes Sociais</h4>
-                    <div class="social-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">YouTube</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Igreja Moriá Restart. Todos os direitos reservados. Desenvolvido por Eder Oliveira.</p>
-            </div>
-        </div>
+        <p>&copy; 2024 Aline Bueno Hair. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Espaço de Beleza | Caxias do Sul - RS</p>
     </footer>
 
-    <script src="scripts/script.js"></script>
+    <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const carousel = document.getElementById('carousel');
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            
+            const offset = -currentSlide * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Auto-play carousel
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .gallery-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
