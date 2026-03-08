@@ -30,82 +30,147 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .logo-container img {
+            margin-top: -10px;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
         nav {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
+        .nav-links {
+            gap: 3rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
 
         .nav-links a {
-            color: var(--gold);
+            color: white;
             text-decoration: none;
-            transition: opacity 0.3s;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.7;
+            text-transform: uppercase   ;
+            transition: color 0.3s;
         }
 
         /* Hero Section */
-        .hero {
+        .hero-new {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a1a1a" width="1200" height="800"/></svg>');
-            background-size: cover;
-            background-position: center;
+            background-color: var(--black); /* */
             display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-top: 150px;
+        }
+
+        .hero-container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--gold);
-            margin-top: 60px;
+            padding: 0 2rem;
+            width: 100%;
         }
 
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            letter-spacing: 3px;
-            font-weight: 300;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
+        .hero-title {
+            font-family: 'Playfair Display', serif; /* Sugestão para a letra cursiva da imagem */
+            font-size: 4.5rem;
+            color: white;
+            line-height: 1.1;
             margin-bottom: 2rem;
             font-style: italic;
         }
 
-        .cta-button {
-            background: var(--gold);
-            color: var(--black);
-            padding: 1rem 3rem;
-            text-decoration: none;
-            font-weight: bold;
-            letter-spacing: 2px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: inline-block;
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            max-width: 500px;
+            margin-bottom: 3rem;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(250, 225, 135, 0.3);
+        .hero-cta {
+            background-color: var(--gold); /* */
+            color: var(--black);
+            padding: 12px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            
         }
+        .hero-cta:hover {
+            background-color: black;
+            color: var(--gold);
+            box-shadow: 1px 1px 4px 4px var(--gold);
+        }
+
+        /* Círculo da Foto */
+        .hero-image-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-circle {
+            width: 450px;
+            height: 450px;
+            border: 3px solid var(--gold); /* */
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Barra Dourada e Letreiro (Marquee) */
+        .golden-bar {
+            background-color: var(--gold); /* */
+            height: 60px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--black);
+            padding-right: 50px;
+            font-weight: bold;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+}
+
 
         /* About Section */
         .about {
@@ -408,33 +473,16 @@
             opacity: 0.7;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            .about,
-            .location-content {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-title { font-size: 2.5rem; }
+    .profile-circle { width: 300px; height: 300px; margin-top: 2rem; }
+    .hero-subtitle { margin: 0 auto 2rem auto; }
+}
 
         /* Animations */
         @keyframes fadeInUp {
