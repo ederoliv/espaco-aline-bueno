@@ -31,7 +31,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo-container {
@@ -147,33 +147,6 @@ nav {
     object-fit: cover;
 }
 
-/* Barra Dourada e Letreiro (Marquee) */
-.golden-bar {
-    background-color: var(--gold);
-    height: 60px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.marquee {
-    display: inline-block;
-    animation: marquee 20s linear infinite;
-}
-
-.marquee span {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--black);
-    padding-right: 50px;
-    font-weight: bold;
-}
-
-@keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
 
 /* About Section */
 .about {
@@ -203,7 +176,7 @@ nav {
     height: 500px;
     background: var(--light-gray);
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .about-image img {
@@ -306,8 +279,13 @@ nav {
     background: var(--gold);
 }
 
-.carousel-btn.prev { left: 1rem; }
-.carousel-btn.next { right: 1rem; }
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
 
 /* Services Section */
 .services {
@@ -339,7 +317,7 @@ nav {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     border-color: var(--gold);
 }
 
@@ -354,7 +332,9 @@ nav {
     color: var(--black);
 }
 
-.service-card p { color: #666; }
+.service-card p {
+    color: #666;
+}
 
 /* Location Section */
 .location {
@@ -383,9 +363,17 @@ nav {
     margin: 0;
 }
 
-.location-info { font-size: 1.1rem; }
-.location-info p { margin-bottom: 1rem; }
-.location-info strong { color: var(--gold); }
+.location-info {
+    font-size: 1.1rem;
+}
+
+.location-info p {
+    margin-bottom: 1rem;
+}
+
+.location-info strong {
+    color: var(--gold);
+}
 
 .map-container {
     width: 100%;
@@ -457,7 +445,9 @@ footer {
     transition: opacity 0.3s;
 }
 
-.social-links a:hover { opacity: 0.7; }
+.social-links a:hover {
+    opacity: 0.7;
+}
 
 /* Animações */
 @keyframes fadeInUp {
@@ -465,18 +455,23 @@ footer {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.fade-in { animation: fadeInUp 1s ease; }
+.fade-in {
+    animation: fadeInUp 1s ease;
+}
 
 /* RESPONSIVIDADE (MOBILE) */
 @media (max-width: 768px) {
-    nav { padding: 1rem; }
-    
+    nav {
+        padding: 1rem;
+    }
+
     .nav-links {
         gap: 1rem;
         flex-wrap: wrap;
@@ -495,26 +490,45 @@ footer {
         text-align: center;
     }
 
-    .hero-title { font-size: 2.5rem; }
-    .hero-subtitle { margin: 0 auto 2rem auto; }
-    .hero-image-wrapper { margin-top: 2rem; }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        margin: 0 auto 2rem auto;
+    }
+
+    .hero-image-wrapper {
+        margin-top: 2rem;
+    }
 
     .profile-circle {
         width: 280px;
         height: 280px;
     }
 
-    .about, .location-content {
+    .about,
+    .location-content {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 3rem 1.5rem;
     }
 
-    .about-image { height: 300px; }
-    .carousel-item { height: 300px; }
+    .about-image {
+        height: 300px;
+    }
 
-    .gallery-grid { grid-template-columns: 1fr; }
-    .gallery-item { height: 300px; }
+    .carousel-item {
+        height: 300px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 300px;
+    }
 
     .contact-buttons {
         flex-direction: column;
@@ -526,13 +540,96 @@ footer {
         max-width: 300px;
     }
 
-    .map-container { height: 300px; }
+    .map-container {
+        height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
-    .hero-title { font-size: 2rem; }
+    .hero-title {
+        font-size: 2rem;
+    }
+
     .profile-circle {
         width: 220px;
         height: 220px;
+    }
+}
+
+
+/* Exemplo equivalente ao antigo ".text-top .container" */
+.mk-text-top .mk-container {
+    max-width: 100% !important;
+}
+
+.mk-ticker {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: var(--gold);
+    /* Cor de fundo */
+    padding: 10px 0;
+    /* Altura da faixa (topo/baixo) */
+    height: 45px;
+    /* Altura da faixa */
+}
+
+.mk-ticker__track {
+    display: flex;
+    animation: mk-ticker-scroll 20s linear infinite;
+    font-family: var(--m-ff);
+    font-size: var(--m-fs);
+    gap: 4rem;
+    color: black;
+}
+
+@keyframes mk-ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Velocidade menor da animação para mobile */
+@media (max-width: 991px) {
+    .mk-ticker__track {
+        animation: mk-ticker-scroll 8s linear infinite;
+        width: 270%;
+    }
+}
+
+/* Barra Dourada e Letreiro (Marquee) */
+.golden-bar {
+    background-color: var(--gold);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--black);
+    padding-right: 50px;
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
     }
 }
