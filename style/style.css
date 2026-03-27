@@ -601,35 +601,95 @@ footer {
     }
 }
 
-/* Barra Dourada e Letreiro (Marquee) */
-.golden-bar {
-    background-color: var(--gold);
-    height: 60px;
+/* --- Social Actions Page --- */
+.social-header {
+    margin-top: 150px;
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: var(--black);
+    color: var(--gold);
+}
+
+.social-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.social-header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: white;
+    line-height: 1.8;
+}
+
+.social-actions {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.social-card {
+    background: var(--light-gray);
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-photo-placeholder {
+    height: 250px;
+    background: #e0e0e0;
     display: flex;
     align-items: center;
-    overflow: hidden;
-    white-space: nowrap;
+    justify-content: center;
+    color: #888;
 }
 
-.marquee {
-    display: inline-block;
-    animation: marquee 20s linear infinite;
+.social-photo-placeholder svg {
+    margin-bottom: 10px;
 }
 
-.marquee span {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+.social-card-content {
+    padding: 1.5rem;
+}
+
+.social-card-content h3 {
+    margin-bottom: 1rem;
     color: var(--black);
-    padding-right: 50px;
-    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-@keyframes marquee {
-    from {
-        transform: translateX(0);
+.social-card-content p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsividade Ações Sociais Mobile */
+@media (max-width: 768px) {
+    .social-header {
+        margin-top: 150px;
+        padding: 3rem 1.5rem;
     }
 
-    to {
-        transform: translateX(-50%);
+    .social-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .social-grid {
+        grid-template-columns: 1fr;
     }
 }
